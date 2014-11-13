@@ -22,6 +22,6 @@ Then make the file executable
 
     chmod u+x docker-run-nginx
 
-And now run the script followed by the name which is applied to the container (e.g. odoo.psql)
+And now run the script followed by the name which is applied to the container
 
-    ./docker-run-nginx odoo.psql
+    ./docker-run-nginx odoo.nginx
