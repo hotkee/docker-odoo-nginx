@@ -1,0 +1,11 @@
+#!/bin/bash
+
+HOSTKNOWN=$(grep odoohost /etc/hosts | awk '{print 1}')
+
+if [ "$HOSTKNOWN" != "1" ]
+  then
+    HOSTIP=$(/sbin/ip route|awk '/default/ { print $3 }')
+    echo "${HOSTIP}    odoohost" >> /etc/hosts
+fi
+
+/usr/sbin/nginx

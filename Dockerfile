@@ -11,9 +11,11 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 VOLUME ["/etc/nginx/sites-available","/etc/nginx/sites-available", "/etc/nginx/certs", "/var/log/nginx"]
 
 ADD logger.conf /etc/nginx/conf.d/logger.conf
+ADD jamo-nginx /usr/local/bin/jamo-nginx
+RUN chmod a+x /usr/local/bin/jamo-nginx
 
 # Define default command.
-CMD ["/usr/sbin/nginx"]
+CMD ["/usr/local/bin/jamo-nginx"]
 
 # Expose ports.
 EXPOSE 80
