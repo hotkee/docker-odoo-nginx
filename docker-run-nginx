@@ -1,0 +1,22 @@
+#!/bin/bash
+readonly RED="\e[31m"
+readonly YELLOW="\e[33m"
+readonly GREEN="\e[32m"
+readonly STD="\e[0m"
+
+if [ $# -lt 1 ]
+  then
+    echo -e "${RED}Error! Too few arguments supplied!"
+    echo -e "${STD}Command: docker-run-nginx <container-name>"
+    exit 1
+fi
+
+docker run -d \
+    -p 0.0.0.0:80:80 \
+    -p 0.0.0.0:443:443 \
+    -v /etc/nginx/sites-available:/etc/nginx/sites-available \
+    -v /etc/nginx/sites-enabled:/etc/nginx/sites-enabled \
+    -v /etc/nginx/certs:/etc/nginx/certs \
+    -v /var/log/nginx:/var/log/nginx \
+    --name $1 \
+    jamotion/odoo-nginx
