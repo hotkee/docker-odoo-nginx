@@ -11,6 +11,7 @@ RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 VOLUME ["/etc/nginx/sites-available","/etc/nginx/sites-available", "/etc/nginx/certs", "/var/log/nginx"]
 
 ADD logger.conf /etc/nginx/conf.d/logger.conf
+ADD buffer.conf /etc/nginx/conf.d/buffer.conf
 ADD jamo-nginx /usr/local/bin/jamo-nginx
 RUN chmod a+x /usr/local/bin/jamo-nginx
 
