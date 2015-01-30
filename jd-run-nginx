@@ -17,6 +17,7 @@ docker run -d \
     -v /etc/nginx/sites-available:/etc/nginx/sites-available \
     -v /etc/nginx/sites-enabled:/etc/nginx/sites-enabled \
     -v /etc/nginx/certs:/etc/nginx/certs \
+    -v /etc/nginx/favicons:/etc/nginx/favicons \
     -v /var/log/nginx:/var/log/nginx \
     --name $1 \
     jamotion/odoo-nginx
