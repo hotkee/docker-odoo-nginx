@@ -1,14 +1,21 @@
 #!/bin/bash
 DIR="$PWD"
+readonly RED="\e[31m"
+readonly YELLOW="\e[33m"
+readonly GREEN="\e[32m"
+readonly STD="\e[0m"
 
-if [ -f /usr/local/bin/docker-run-nginx ]
-  then
-    rm /usr/local/bin/docker-run-nginx
-fi
-if [ -f /usr/local/bin/docker-del-nginx ]
-  then
-    rm /usr/local/bin/docker-del-nginx
-fi
+CMDS="jd-run-nginx jd-del-nginx"
 
-ln -s ${DIR}/docker-run-nginx /usr/local/bin/docker-run-nginx
-ln -s ${DIR}/docker-del-nginx /usr/local/bin/docker-del-nginx
+for CMD in $CMDS
+  do
+    echo -e "${YELLOW}Installing ${CMD}...${STD}"
+    if [ -f /usr/local/bin/${CMD} ] || [ -L /usr/local/bin/${CMD} ]
+      then
+        echo -e "${YELLOW}-> Removing old file or link..."
+        rm /usr/local/bin/${CMD}
+    fi
+    echo -e "${YELLOW}-> Adding link..."
+    ln -s ${DIR}/${CMD} /usr/local/bin/${CMD}
+    echo -e "${GREEN}${CMD} installed${STD}"
+done
