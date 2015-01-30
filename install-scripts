@@ -1,0 +1,9 @@
+#!/bin/bash
+DIR="$PWD"
+
+if [ -f /usr/local/bin/docker-run-nginx ]
+  then
+    rm /usr/local/bin/docker-run-nginx
+fi
+
+ln -s ${DIR}/docker-run-nginx /usr/local/bin/docker-run-nginx
