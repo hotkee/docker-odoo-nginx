@@ -5,5 +5,10 @@ if [ -f /usr/local/bin/docker-run-nginx ]
   then
     rm /usr/local/bin/docker-run-nginx
 fi
+if [ -f /usr/local/bin/docker-del-nginx ]
+  then
+    rm /usr/local/bin/docker-del-nginx
+fi
 
 ln -s ${DIR}/docker-run-nginx /usr/local/bin/docker-run-nginx
+ln -s ${DIR}/docker-del-nginx /usr/local/bin/docker-del-nginx
